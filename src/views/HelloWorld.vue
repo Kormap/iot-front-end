@@ -3,7 +3,10 @@
     <h1>{{ msg }}</h1>
     <h1> PianaTest :: {{ user.clientName }}</h1>
     <button @click="user.changeName">이름 변경</button>
-
+    <p>
+      회원가입을 하시려면
+      <router-link to="/signup">여기를 클릭하세요</router-link>.
+    </p>
     <div>
       <h2>Auth API 호출</h2>
       <button @click="fetchAuthData" :disabled="loading">

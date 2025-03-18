@@ -25,8 +25,11 @@ api.interceptors.request.use(
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        console.error("API 요청 중 오류 발생:", error);
-        return Promise.reject(error);
+        if (error.response) {
+            // 서버에서 반환된 에러 응답을 처리
+            return Promise.resolve(error.response); // error.response를 반환하여 response처럼 처리 가능
+        }
+        return Promise.reject(error); // 네트워크 오류 등은 그대로 에러로 처리
     }
 );
 
