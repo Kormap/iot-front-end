@@ -53,7 +53,7 @@
 
 <script>
 import {useUserInfoStore} from "@/store/auth/useAuthStore";
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import authService from "@/api/service/authService";
 
 export default {
@@ -64,6 +64,12 @@ export default {
     msg: String
   },
   setup() {
+    const userInfoStore = useUserInfoStore();
+    // 새로고침 시 사용자 정보를 복원
+    onMounted(() => {
+      userInfoStore.restoreUserInfo();
+    });
+
     const user = useUserInfoStore()
 
     // 모듈화 API 호출 테스트

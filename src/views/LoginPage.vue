@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <h1 class="title">로그인</h1>
-    <form @submit.prevent="login">
+    <form @submit.prevent="handleLogin">
       <!-- 이메일 -->
       <div class="form-group">
         <label for="email">이메일</label>
@@ -47,6 +47,7 @@
 
 <script>
 import { ref } from "vue";
+import {useUserInfoStore} from "@/store/auth/useAuthStore";
 
 export default {
   name: "LoginForm",
@@ -56,15 +57,14 @@ export default {
       password: ""
     });
 
-    const login = () => {
-      // 로그인 로직 구현
-      console.log("로그인 시도:", form.value);
-      // API 호출 코드 작성
-    };
+    const userInfoStore = useUserInfoStore();
+    const handleLogin = async () => {
+      await userInfoStore.login(form.value);
+    }
 
     return {
       form,
-      login
+      handleLogin,
     };
   }
 };

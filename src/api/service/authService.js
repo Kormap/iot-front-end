@@ -18,7 +18,19 @@ const authService = {
     async signUp(data) {
         console.log(data);
         return api.post("/api/auth/signup", data); // API 호출
-    }
+    },
+    async login(data) {
+        console.log(data);
+        return api.post("/api/auth/login", data); // API 호출
+    },
+    async logout() {
+        return api.get("/api/auth/logout"); // API 호출
+    },
+
+
+    async test() {
+        return api.get("/api/auth/test"); // API 호출 테스트용
+    },
 };
 
 export default authService;

@@ -5,6 +5,7 @@ const api = axios.create({
         "Content-Type": "application/json",
     },
     baseURL: process.env.VUE_APP_API_BASE_URL,
+    withCredentials: true, // 쿠키 포함 송신
     // timeout: 5000, // 요청 타임아웃 (선택)
 });
 
@@ -25,10 +26,6 @@ api.interceptors.request.use(
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response) {
-            // 서버에서 반환된 에러 응답을 처리
-            return Promise.resolve(error.response); // error.response를 반환하여 response처럼 처리 가능
-        }
         return Promise.reject(error); // 네트워크 오류 등은 그대로 에러로 처리
     }
 );

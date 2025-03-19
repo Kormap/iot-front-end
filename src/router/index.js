@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HelloWorld from '../views/HelloWorld.vue';
 import SignUpPage from '../views/SignUpPage.vue';
 import LoginPage from '../views/LoginPage.vue';
+import MonitoringPage from "../views/MonitoringPage.vue";
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: HelloWorld, // 초기 화면
+        redirect: '/login', // 초기 화면
     },
     {
         path: '/signup',
@@ -18,6 +17,11 @@ const routes = [
         path: '/login',
         name: 'LoginPage',
         component: LoginPage, // 회원가입 화면
+    },
+    {
+        path: '/monitor',
+        name: 'MonitoringPage',
+        component: MonitoringPage, // 회원가입 화면
     },
 ];
 

@@ -143,6 +143,7 @@ export default {
 
       authService.verifyEmailSend(form.value)
           .then((response) => {
+            console.log(response);
             // metaData와 data 추출
             const metaData = response.data.metaData;
             if (metaData.status === 400) {
@@ -151,11 +152,16 @@ export default {
             }
             const data = response.data.data;
 
-            // console.log("메타데이터:", metaData);
-            // console.log("데이터:", data);
             if (metaData.status === 200) {
               alert("메일 발신요청이 성공적으로 처리되었습니다.");
               accessToken = data.accessToken;
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              const metaData = error.response.data.metaData;
+              alert(metaData.message);
+              return;
             }
           })
     };
@@ -169,6 +175,7 @@ export default {
 
       const request = {
         accessToken: accessToken,      // accessToken
+        email: form.value.email,
         verifyCode: verifyCode,        // 인증코드
       };
 
@@ -189,6 +196,13 @@ export default {
                 const data = response.data.data;
                 hasEmailAuth = data.hasEmailAuth;
               }
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              const metaData = error.response.data.metaData;
+              alert(metaData.message);
+              return;
             }
           })
     };
@@ -225,6 +239,13 @@ export default {
             }else {
               alert("회원가입에 성공하였습니다.");
               router.push("/login");
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              const metaData = error.response.data.metaData;
+              alert(metaData.message);
+              return;
             }
           })
     };
