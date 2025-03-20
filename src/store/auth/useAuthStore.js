@@ -18,11 +18,6 @@ export const useUserInfoStore = defineStore('userInfo', {
         }
     },
     actions: {
-        // TEST 용
-        changeName() {
-            this.name = "변경된이름";
-            console.log(this.name);
-        },
         // 로그인 로직
         async login(formData) {
             try {
@@ -77,7 +72,6 @@ export const useUserInfoStore = defineStore('userInfo', {
 
                 // localStorage에서 정보 제거
                 localStorage.removeItem("userInfo");
-
             }catch (error) {
                 if (error.response) {
                     const metaData = error.response.data.metaData;
@@ -86,7 +80,7 @@ export const useUserInfoStore = defineStore('userInfo', {
                     console.error(error.message);
                 }
             }
-            await router.push("/login");
+            await router.push({ path: "/login", query: { logout: "true" } });
         }
     }
 })

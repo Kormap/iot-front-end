@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h1> PianaTest :: {{ user.clientName }}</h1>
-    <button @click="user.changeName">이름 변경</button>
+<!--    <button @click="user.changeName">이름 변경</button>-->
     <p>
       회원가입을 하시려면
       <router-link to="/signup">여기를 클릭하세요</router-link>.
