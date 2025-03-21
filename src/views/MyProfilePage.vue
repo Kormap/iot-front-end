@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import {ref, onMounted, computed} from "vue";
+import {ref, computed, onBeforeMount} from "vue";
 import {useUserInfoStore} from "@/store/auth/useAuthStore";
 import userService from "@/api/service/userService";
 import router from "@/router";
@@ -74,7 +74,7 @@ export default {
       phoneNumber: null
     });
 
-    onMounted(async () => {
+    onBeforeMount(async () => {
       await userInfoStore.restoreUserInfo(); // Pinia 상태 복원
       loading.value = false;
       getUserProfile();
