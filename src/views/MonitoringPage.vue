@@ -60,7 +60,6 @@ export default {
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
     const milliseconds = now.getMilliseconds();
-    console.log(hours, minutes, seconds, milliseconds);
 
     const data = {
       labels: [ // Date Objects
@@ -161,7 +160,7 @@ export default {
       chartInstance = new Chart(ctx, config);
 
       // 센서데이터 조회 API
-      getSensorData();
+      await getSensorData();
     });
 
     // 센서데이터 조회 API
