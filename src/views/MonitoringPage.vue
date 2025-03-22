@@ -174,10 +174,9 @@ export default {
         }));
         // console.log(TEMPERATURE_DATA.value);
         chartInstance.data.datasets[0].data = TEMPERATURE_DATA.value;
-        chartInstance.update();
-
         // console.log(Utils.newTimeFormatted(0,0,0,0));
         // console.log(chartInstance.data.datasets[0].data);
+
         // 2. 습도 센서 데이터 조회
         const humidityData = await getSensorDataByType("DHT_HUMIDITY");
         HUMIDITY_DATA.value = humidityData.map(item => ({
@@ -186,7 +185,6 @@ export default {
         }));
         // console.log(HUMIDITY_DATA.value);
         chartInstance.data.datasets[1].data = HUMIDITY_DATA.value;
-        chartInstance.update();
 
         // 3. 토양수분 센서 데이터 조회
         const soilMoistureData = await getSensorDataByType("SOIL_MOISTURE");
@@ -196,6 +194,8 @@ export default {
         }));
         // console.log(SOIL_MOISTURE_DATA.value);
         chartInstance.data.datasets[2].data = SOIL_MOISTURE_DATA.value;
+
+        // 센서 데이터 차트 업데이트
         chartInstance.update();
       } catch (error) {
         if (error.response.status === 401) {
