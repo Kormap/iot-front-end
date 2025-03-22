@@ -3,6 +3,7 @@ import SignUpPage from '../views/SignUpPage.vue';
 import LoginPage from '../views/LoginPage.vue';
 import MonitoringPage from "../views/MonitoringPage.vue";
 import MyProfilePage from "../views/MyProfilePage.vue";
+import WeeklyMonitoringSummaryPage from "../views/WeeklyMonitoringSummaryPage.vue";
 import {useUserInfoStore} from "@/store/auth/useAuthStore";
 
 const routes = [
@@ -18,17 +19,22 @@ const routes = [
     {
         path: '/login',
         name: 'LoginPage',
-        component: LoginPage, // 회원가입 화면
+        component: LoginPage, // 로그인 화면
     },
     {
         path: '/monitor',
         name: 'MonitoringPage',
-        component: MonitoringPage, // 회원가입 화면
+        component: MonitoringPage, // 모니터링 화면
+    },
+    {
+        path: '/summary',
+        name: 'WeeklyMonitoringSummaryPage',
+        component: WeeklyMonitoringSummaryPage, // 주간요약정보 화면
     },
     {
         path: '/profile',
         name: 'MyProfilePage',
-        component: MyProfilePage, // 회원가입 화면
+        component: MyProfilePage, // 회원정보 화면
     },
 ];
 

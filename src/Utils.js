@@ -153,6 +153,16 @@ export function newDate(days) {
     return DateTime.now().plus({days}).toJSDate();
 }
 
+// 일자별 포맷
+export function newDateFormatted(days) {
+    return DateTime.now().plus({ days }).toFormat("M/d");
+}
+
+// 시간별 포맷
+export function newTimeFormatted(hours, minutes, seconds, milliseconds) {
+    return DateTime.now().set({ hour: hours, minute: minutes, second: seconds, millisecond: milliseconds }).toJSDate();
+}
+
 export function newDateString(days) {
     return DateTime.now().plus({days}).toISO();
 }
