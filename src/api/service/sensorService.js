@@ -7,6 +7,13 @@ const sensorService = {
                 params: {sensorType: sensorType}    // 쿼리파라미터 전달
             });
     },
+    async getSensorsThreshold(userId) {
+        return api.get(`/api/sensor/users/${userId}/sensor-threshold`);
+    },
+
+    async getSensorsWarning(userId) {
+        return api.get(`/api/sensor/users/${userId}/sensor-warning`);
+    },
 };
 
 export default sensorService;
